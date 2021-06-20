@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
-// import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 
@@ -21,13 +21,15 @@ const Blog = () => {
                   excerpt(pruneLength: 150)
                 }
               }
+              featuredImage{
+                gatsbyImageData(width: 400)
+              }
             }
           }
         }
       }
     `
   )
-  // const image = getImage(data.allContentfulBlogPost.edges.node)
 
   return (
     <Layout>
@@ -45,14 +47,15 @@ const Blog = () => {
               <div className="meta">
                 <span>Posted on {edge.node.publishedDate}</span>
               </div>
-              {/* {edge.node.featuredImage && (
-                <Img
-                  className="featured"
-                  fluid={edge.node.featuredImage.fluid}
-                  alt={edge.node.title}
-                />
-              )} */}
 
+              {
+                edge.node.featuredImage &&
+                <GatsbyImage
+                  style={{ width: 800 }}
+                  image={getImage(edge.node.featuredImage)}
+                  alt={edge.node.title} />
+              }
+              {console.log("the image is: ", edge.node.featuredImage)}
               <p className="excerpt">
                 {edge.node.excerpt.childMarkdownRemark.excerpt}
               </p>

@@ -13,6 +13,11 @@ export const query = graphql`
       featuredImage{
         gatsbyImageData(width: 200)
       }
+      excerpt {
+        childMarkdownRemark {
+          html
+        }
+      }
     }
   }
 `
@@ -28,13 +33,16 @@ const BlogPost = props => {
         <span className="meta">
           Posted on {props.data.contentfulBlogPost.publishedDate}
         </span>
-        {
-          props.data.contentfulBlogPost.featuredImage &&
-          <GatsbyImage
-            image={image}
-            alt={props.data.contentfulBlogPost.title} />
-        }
-
+        <div>
+          {
+            props.data.contentfulBlogPost.featuredImage &&
+            <GatsbyImage
+              image={image}
+              alt={props.data.contentfulBlogPost.title} />
+          }
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: props.data.contentfulBlogPost.excerpt.childMarkdownRemark.html }}>
+        </div>
       </div>
     </Layout>
   )
