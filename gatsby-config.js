@@ -5,8 +5,8 @@ if (process.env.NODE_ENV != 'production') {
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `gatsby contentful blog`,
+    title: `youShopWeShip`,
+    description: `You shop we ship shopping site`,
     author: `@noumanjaved`,
   },
   plugins: [
@@ -43,7 +43,7 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `gd5c1m6kjwpz`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         forceFullSync: true,
       }

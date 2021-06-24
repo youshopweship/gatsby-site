@@ -2,15 +2,14 @@ import * as React from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Carousel from '../components/carousel'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
 
-const IndexPage = () => {
+const Accessories = () => {
   const data = useStaticQuery(
     graphql`
     query{
-      allContentfulProduct {
+      allContentfulProduct(filter: {productType: {eq: "accessories"}}) {
         edges {
           node {
             slug
@@ -32,16 +31,11 @@ const IndexPage = () => {
   )
   return (
     <Layout>
-      <div style={{ marginBottom: '50px', overflow: 'hidden' }}>
-        <Carousel />
-      </div>
       <Seo title="Home" />
 
-      <div className="text-center"><h2 style={{ color: '#48ACF0', fontFamily: 'fantasy' }}>Latest Products</h2></div>
-
       <div className="container">
+        {(data.allContentfulProduct.edges).length === 0 ? <h2>No Products found</h2> : null}
         <div className="row d-flex justify-content-center">
-
           {
             data.allContentfulProduct.edges.map(edge => {
               return (
@@ -60,9 +54,9 @@ const IndexPage = () => {
                   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                     <p style={{ marginTop: '15px', fontWeight: 'bold', fontStyle: 'italic' }}>Rs-{edge.node.price}/-</p>
 
-                    {/* <button style={{ margin: '10px', backgroundColor: '#ef3d56', color: '#fff' }} className="btn">Details</button> */}
-
                     <Link style={{ margin: '10px', backgroundColor: '#ef3d56', color: '#fff' }} className="btn" to={`/product/${edge.node.slug}/`}>Details</Link>
+
+                    {/* <button style={{ margin: '10px', backgroundColor: '#ef3d56', color: '#fff' }} className="btn">Details</button> */}
                   </div>
                 </div>
               )
@@ -93,4 +87,4 @@ const styles = {
     paddingRight: '10px'
   }
 }
-export default IndexPage
+export default Accessories
