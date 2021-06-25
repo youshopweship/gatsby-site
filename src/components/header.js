@@ -1,5 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
 const Header = () => (
@@ -15,11 +17,12 @@ const Header = () => (
           <Link style={{ textDecoration: 'none' }} to="/lips/" ><a href="." class="nav-link">Lips</a></Link>
           <Link style={{ textDecoration: 'none' }} to="/face/" ><a href="." class="nav-link">Face</a></Link>
           <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
-          <Link style={{ textDecoration: 'none' }} to="/blog/"><a href="." class="nav-link">Blog</a></Link>
         </ul>
         <div>
-          <Link style={{ textDecoration: 'none' }} to="/"><a href="." style={{ color: 'white' }} class="nav-link">Cart</a></Link>
+          <Link style={{ textDecoration: 'none' }} to="/"><a href="." style={{ color: 'white' }} class="nav-link"><FontAwesomeIcon size="2x" icon={faShoppingCart} />
+          </a></Link>
         </div>
+
       </div>
     </div>
   </nav>
