@@ -2,31 +2,58 @@ import * as React from "react"
 import { Link } from "gatsby"
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useSelector } from "react-redux"
 
 
-const Header = () => (
-  <nav class="navbar navbar-expand-lg navbar-dark light bg-dark">
-    <div class="container">
-      <Link style={{ textDecoration: 'none', transform: `skewX(-20deg)`, }} to="/"><a href="." style={{ color: "#fff", backgroundColor: '#ef3d56', paddingLeft: '30px', paddingRight: '30px', fontWeight: 'bold' }} class="navbar-brand">You Shop We Ship</a></Link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <Link style={{ textDecoration: 'none' }} to="/eyes/"><a href="." class="nav-link">Eyes</a></Link>
-          <Link style={{ textDecoration: 'none' }} to="/lips/" ><a href="." class="nav-link">Lips</a></Link>
-          <Link style={{ textDecoration: 'none' }} to="/face/" ><a href="." class="nav-link">Face</a></Link>
-          <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
-        </ul>
-        <div>
-          <Link style={{ textDecoration: 'none' }} to="/"><a href="." style={{ color: 'white' }} class="nav-link"><FontAwesomeIcon size="2x" icon={faShoppingCart} />
-          </a></Link>
+const Header = () => {
+  const qty = useSelector(state => state.cart.items)
+  return (
+    < nav class="navbar navbar-expand-lg navbar-dark light bg-dark" >
+      <div class="container">
+        <Link
+          style={{ textDecoration: 'none', transform: `skewX(-20deg)`, }}
+          to="/"
+        >
+          <a
+            href="."
+            style={{ color: "#fff", backgroundColor: '#ef3d56', paddingLeft: '30px', paddingRight: '30px', fontWeight: 'bold' }}
+            class="navbar-brand"
+          >
+            You Shop We Ship
+          </a>
+        </Link>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="true"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <Link style={{ textDecoration: 'none' }} to="/eyes/"><a href="." class="nav-link">Eyes</a></Link>
+            <Link style={{ textDecoration: 'none' }} to="/lips/" ><a href="." class="nav-link">Lips</a></Link>
+            <Link style={{ textDecoration: 'none' }} to="/face/" ><a href="." class="nav-link">Face</a></Link>
+            <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
+
+          </ul>
+
+          <div>
+            <Link style={{ textDecoration: 'none' }} to="/cart/"><a href="." style={{ color: 'white' }} class="nav-link"><FontAwesomeIcon size="2x" icon={faShoppingCart} />{' '}<span style={{ fontSize: 20 }}>({qty.length})</span>
+            </a></Link>
+          </div>
+
         </div>
-
       </div>
-    </div>
-  </nav>
-)
+    </nav >
+  )
+}
 
 export default Header
 

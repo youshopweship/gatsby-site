@@ -5,19 +5,20 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react"
 
+import * as React from "react"
+import './layout.css'
 import Header from "./header"
 import Footer from "./footer"
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div style={{ backgroundColor: "#edf2f4", display: 'flex', minHeight: '100vh', flexDirection: 'column' }}>
       <Header />
-      <div>
+      <div style={{ flexGrow: 1 }}>
         <main>{children}</main>
-        <Footer />
       </div>
+      <Footer />
     </div >
   )
 }

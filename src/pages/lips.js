@@ -2,10 +2,14 @@ import * as React from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import { addProduct } from '../store/cart.slice'
+import { useDispatch } from 'react-redux'
 
 
 const Lips = () => {
+  const dispatch = useDispatch()
+
   const data = useStaticQuery(
     graphql`
     query{
@@ -35,7 +39,7 @@ const Lips = () => {
 
       <div className="container">
         {(data.allContentfulProduct.edges).length === 0 ? <h2>No Products found</h2> : null}
-        <div className="row d-flex justify-content-center">
+        <div className="row d-flex justify-content-center justify-content-sm-center justify-content-md-start">
           {
             data.allContentfulProduct.edges.map(edge => {
               return (
@@ -51,13 +55,26 @@ const Lips = () => {
                     image={getImage(edge.node.mainImage)}
                     alt={edge.node.title}
                   />
-                  <h5
+                  <h4
                     style={styles.title}
-                  >{edge.node.title}</h5>
+                  >{edge.node.title}</h4>
                   <p style={styles.body}>{edge.node.details.childMarkdownRemark.excerpt}</p>
                   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                     <p style={{ marginTop: '15px', fontWeight: 'bold', fontStyle: 'italic' }}>Rs-{edge.node.price}/-</p>
-                    <Link style={{ margin: '10px', backgroundColor: '#ef3d56', color: '#fff' }} className="btn" to={`/product/${edge.node.slug}/`}>Details</Link>
+
+                    <div>
+                      <button
+                        onClick={() => {
+                          dispatch(addProduct({ title: edge.node.title, price: edge.node.price }))
+                          navigate('/cart/')
+                        }}
+                        style={{ margin: '10px', backgroundColor: '#4a4e69', color: '#fff', marginRight: '0px' }} className="btn"
+                      >
+                        Buy
+                      </button>
+
+                      <Link style={{ margin: '10px', backgroundColor: '#4a4e69', color: '#fff', marginLeft: '3px' }} className="btn" to={`/product/${edge.node.slug}/`}>Details</Link>
+                    </div>
                   </div>
                 </div>
               )

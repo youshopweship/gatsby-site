@@ -3,10 +3,14 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Carousel from '../components/carousel'
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../store/cart.slice'
 
 
 const IndexPage = () => {
+  const dispatch = useDispatch()
+
   const data = useStaticQuery(
     graphql`
     query{
@@ -37,18 +41,16 @@ const IndexPage = () => {
       </div>
       <Seo title="Home" />
 
-      <div className="text-center"><h2 style={{ color: '#48ACF0', fontFamily: 'fantasy' }}>Latest Products</h2></div>
+      <div className="text-center"><h2 style={{ color: '#4a4e69', fontFamily: 'Rajdhani, serif' }}>Latest Products</h2></div>
 
       <div className="container">
-        <div className="row d-flex justify-content-center">
-
+        <div className="row d-flex justify-content-center justify-content-sm-center justify-content-md-start">
           {
             data.allContentfulProduct.edges.map(edge => {
               return (
                 <div
                   style={{
                     border: '1px solid lightgrey', width: '300px', margin: '10px', padding: '0', boxShadow: '2px 3px 21px -4px rgba(0,0,0,0.81)', borderRadius: '5px'
-
                   }}
                   className="col-sm-12 col-md-4"
                 >
@@ -57,15 +59,29 @@ const IndexPage = () => {
                     image={getImage(edge.node.mainImage)}
                     alt={edge.node.title}
                   />
-                  <h5
+                  <h4
                     style={styles.title}
-                  >{edge.node.title}</h5>
+                  >{edge.node.title}</h4>
                   <p style={styles.body}>{edge.node.details.childMarkdownRemark.excerpt}</p>
                   <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
-                    <p style={{ marginTop: '15px', fontWeight: 'bold', fontStyle: 'italic' }}>Rs-{edge.node.price}/-</p>
-                    <Link style={{ margin: '10px', backgroundColor: '#ef3d56', color: '#fff' }} className="btn" to={`/product/${edge.node.slug}/`}>Details</Link>
+                    <p style={{ marginTop: '15px', fontFamily: 'Lato, serif', fontWeight: 'bold', fontStyle: 'italic' }}>Rs-{edge.node.price}/-</p>
+
+                    <div>
+                      <button
+                        onClick={() => {
+                          dispatch(addProduct({ title: edge.node.title, price: edge.node.price }))
+                          navigate('/cart/')
+                        }}
+                        style={{ margin: '10px', backgroundColor: '#4a4e69', color: '#fff', marginRight: '0px' }} className="btn"
+                      >
+                        Buy
+                      </button>
+
+                      <Link style={{ margin: '10px', backgroundColor: '#4a4e69', color: '#fff', marginLeft: '3px' }} className="btn" to={`/product/${edge.node.slug}/`}>Details</Link>
+                    </div>
                   </div>
                 </div>
+
               )
             })
           }
@@ -84,6 +100,7 @@ const styles = {
     textOverflow: 'ellipsis',
     width: '100%',
     padding: '10px',
+    fontFamily: 'Lato, serif'
   },
   body: {
     lineHeight: '1.5em',
@@ -91,7 +108,8 @@ const styles = {
     overflow: 'hidden',
     paddingBottom: '10px',
     paddingLeft: '10px',
-    paddingRight: '10px'
+    paddingRight: '10px',
+    fontFamily: 'sans-serif',
   }
 }
 export default IndexPage
