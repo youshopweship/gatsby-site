@@ -6,14 +6,13 @@ import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
 import { addProduct } from '../store/cart.slice'
 import { useDispatch } from 'react-redux'
 
-
-const Lips = () => {
+const Electronics = () => {
   const dispatch = useDispatch()
 
   const data = useStaticQuery(
     graphql`
     query{
-      allContentfulProduct(filter: {productType: {eq: "lips"}}) {
+      allContentfulProduct(filter: {productType: {eq: "electronics"}}) {
         edges {
           node {
             slug
@@ -38,11 +37,7 @@ const Lips = () => {
       <Seo title="Home" />
 
       <div className="container">
-
-
         {(data.allContentfulProduct.edges).length === 0 ? <h2 className="text-center mt-5 pt-5">No Products found</h2> : null}
-
-
         <div className="row d-flex justify-content-center justify-content-sm-center justify-content-md-start">
           {
             data.allContentfulProduct.edges.map(edge => {
@@ -50,7 +45,6 @@ const Lips = () => {
                 <div
                   style={{
                     border: '1px solid lightgrey', width: '300px', margin: '10px', padding: '0', boxShadow: '2px 3px 21px -4px rgba(0,0,0,0.81)', borderRadius: '5px'
-
                   }}
                   className="col-sm-12 col-md-4"
                 >
@@ -79,6 +73,7 @@ const Lips = () => {
 
                       <Link style={{ margin: '10px', backgroundColor: '#4a4e69', color: '#fff', marginLeft: '3px' }} className="btn" to={`/product/${edge.node.slug}/`}>Details</Link>
                     </div>
+
                   </div>
                 </div>
               )
@@ -109,4 +104,4 @@ const styles = {
     paddingRight: '10px'
   }
 }
-export default Lips
+export default Electronics

@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import './cart.css'
 
 const Cart = () => {
+  const contact = 923045681874
+  const encodedMessage = `I+want+to+Place+new+Order`
+
   const [qulPaisay, setQulPaisay] = React.useState(0)
   const cart = useSelector(state => state.cart.items)
   const dispatch = useDispatch()
@@ -63,10 +66,6 @@ const Cart = () => {
                   </button>
                 </div>
 
-
-
-
-
               </div>
               <div className="row bg-light p-4 pt-0 pb-0">
                 <div style={{ fontWeight: 'bold' }} className="col text-end">x{item.quantity}</div>
@@ -90,13 +89,16 @@ const Cart = () => {
 
         {qulPaisay > 0 &&
           <button className="btn mb-5" style={{ backgroundColor: '#00e676' }}>
-            <a style={{ textDecoration: 'none', color: 'black' }} href="https://wa.me/923045681874/">ORDER ON WHATSAPP</a>
+            <a
+              style={{ textDecoration: 'none', color: 'black' }}
+              href={`https://wa.me/${contact}?text=${encodedMessage}`}
+            >
+              ORDER ON WHATSAPP
+            </a>
           </button>
         }
       </div>
-    </div>
-
-
+    </div >
   )
 }
 

@@ -37,10 +37,11 @@ const Header = () => {
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
             <Link style={{ textDecoration: 'none' }} to="/eyes/"><a href="." class="nav-link">Eyes</a></Link>
             <Link style={{ textDecoration: 'none' }} to="/lips/" ><a href="." class="nav-link">Lips</a></Link>
             <Link style={{ textDecoration: 'none' }} to="/face/" ><a href="." class="nav-link">Face</a></Link>
-            <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
+            <Link style={{ textDecoration: 'none' }} to="/electronics/"><a href="." class="nav-link">Electronics</a></Link>
 
           </ul>
 

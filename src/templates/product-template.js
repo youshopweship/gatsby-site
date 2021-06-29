@@ -19,10 +19,10 @@ query ($slug: String!) {
       }
     }
     mainImage {
-      gatsbyImageData(quality: 10)
+      gatsbyImageData(width: 700, height: 400, quality: 100)
     }
     detailImages {
-      gatsbyImageData(quality: 10)
+      gatsbyImageData(width: 180, height: 100, quality: 100)
     }
     price
   }
@@ -51,7 +51,7 @@ const ProductTemplate = props => {
             <div className="col-sm-12 d-flex flex-nowrap">
               {props.data.contentfulProduct.detailImages.map(image => (
 
-                <div style={{ marginRight: '10px', display: 'inline', width: '200px', }}>
+                <div style={{ marginRight: '10px', display: 'inline' }}>
 
                   <GatsbyImage
                     width={500}

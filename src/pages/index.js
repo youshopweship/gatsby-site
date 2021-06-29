@@ -25,7 +25,7 @@ const IndexPage = () => {
               }
             }
             mainImage {
-              gatsbyImageData
+              gatsbyImageData(width: 300, height: 200, quality: 100)
             }
             price
           }
@@ -41,9 +41,15 @@ const IndexPage = () => {
       </div>
       <Seo title="Home" />
 
-      <div className="text-center"><h2 style={{ color: '#4a4e69', fontFamily: 'Rajdhani, serif' }}>Latest Products</h2></div>
+
+      {
+        (data.allContentfulProduct.edges).length > 0 ?
+          <div className="text-center"><h2 style={{ color: '#4a4e69', fontFamily: 'Rajdhani, serif' }}>Latest Products</h2></div> : null
+      }
 
       <div className="container">
+
+        {(data.allContentfulProduct.edges).length === 0 ? <h2 className="text-center mt-5 pt-5">No Products found</h2> : null}
         <div className="row d-flex justify-content-center justify-content-sm-center justify-content-md-start">
           {
             data.allContentfulProduct.edges.map(edge => {

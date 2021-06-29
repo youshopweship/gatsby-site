@@ -23,7 +23,7 @@ const Face = () => {
               }
             }
             mainImage {
-              gatsbyImageData(quality:10)
+              gatsbyImageData(width: 300, height: 200, quality: 100)
             }
             price
           }
@@ -37,7 +37,7 @@ const Face = () => {
       <Seo title="Home" />
 
       <div className="container">
-        {(data.allContentfulProduct.edges).length === 0 ? <h2>No Products found</h2> : null}
+        {(data.allContentfulProduct.edges).length === 0 ? <h2 className="text-center mt-5 pt-5">No Products found</h2> : null}
         <div className="row d-flex justify-content-center justify-content-sm-center justify-content-md-start">
           {
             data.allContentfulProduct.edges.map(edge => {
