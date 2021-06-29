@@ -20,7 +20,7 @@ const Carousel = () => {
         <div>
           <StaticImage
             src="../images/carousel-8.jpg"
-            formats={["AUTO", "WEBP", "AVIF"]}
+            formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
             style={{ width: '100%', height: '500px' }}
           />
@@ -28,7 +28,7 @@ const Carousel = () => {
         <div>
           <StaticImage
             src="../images/carousel-3.jpg"
-            formats={["AUTO", "WEBP", "AVIF"]}
+            formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
             style={{ width: '100%', height: '500px' }}
           />
@@ -37,7 +37,7 @@ const Carousel = () => {
         <div>
           <StaticImage
             src="../images/carousel-5.jpg"
-            formats={["AUTO", "WEBP", "AVIF"]}
+            formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
             style={{ width: '100%', height: '500px' }}
           />
@@ -45,7 +45,7 @@ const Carousel = () => {
         <div>
           <StaticImage
             src="../images/carousel-7.jpg"
-            formats={["AUTO", "WEBP", "AVIF"]}
+            formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
             style={{ width: '100%', height: '500px' }}
           />
