@@ -23,7 +23,7 @@ const Eyes = () => {
               }
             }
             mainImage {
-              gatsbyImageData(width:300, height:200)
+              gatsbyImageData(quality: 10)
             }
             price
           }

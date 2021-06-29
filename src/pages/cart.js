@@ -25,7 +25,19 @@ const Cart = () => {
     <div style={{ backgroundColor: '#f0f5f6', height: '100vh', fontFamily: 'Rajdhani, serif' }}>
       <div className="container-fluid justify-content-center text-center">
         <div className="row pt-3">
-          <h4 onClick={() => navigate('/')} className="col icon"><span><FontAwesomeIcon icon={faLongArrowAltLeft} color={'#52b7f6'} size={'1x'} /></span>Go Back</h4>
+
+          <div className="col">
+
+            <button
+              onClick={() => navigate('/')}
+              className="icon"
+              style={{ backgroundColor: '#f0f5f6', border: 'none', fontWeight: 'bold' }}
+            ><span><FontAwesomeIcon icon={faLongArrowAltLeft} color={'#52b7f6'} size={'1x'} /></span>
+              Go Back
+            </button>
+
+          </div>
+
           <h4 className="col">
             <FontAwesomeIcon icon={faShoppingBasket} color={'#52b7f6'} size={'1x'} />
           </h4>
@@ -40,7 +52,21 @@ const Cart = () => {
             <div className="mb-2">
               <div className="row bg-light p-4 pb-0">
                 <h4 className="col text-start" style={{ fontFamily: 'Lato, serif' }}>{item.title} </h4>
-                <div onClick={() => { dispatch(removeProduct(item.title)) }} className="col text-end"><FontAwesomeIcon size="1x" className="icon" icon={faTrash} color={'#db3f3d'} /></div>
+
+
+                <div className="col d-flex justify-content-end">
+                  <button
+                    style={{ border: "none", backgroundColor: '#f8f9fa' }}
+                    onClick={() => { dispatch(removeProduct(item.title)) }}
+                  >
+                    <FontAwesomeIcon size="1x" className="icon" icon={faTrash} color={'#db3f3d'} />
+                  </button>
+                </div>
+
+
+
+
+
               </div>
               <div className="row bg-light p-4 pt-0 pb-0">
                 <div style={{ fontWeight: 'bold' }} className="col text-end">x{item.quantity}</div>

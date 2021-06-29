@@ -34,6 +34,8 @@ export const storeSlice = createSlice({
             quantity: item.quantity += 1
           }
         }
+
+        return null
       })
 
       // add object if not present
@@ -42,6 +44,8 @@ export const storeSlice = createSlice({
         if (item.title === action.payload.title) {
           present = true
         }
+
+        return null
       })
       if (!present) {
         state.items.push({ title: action.payload.title, price: action.payload.price, quantity: 1 })

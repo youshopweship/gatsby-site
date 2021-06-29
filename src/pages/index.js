@@ -25,7 +25,7 @@ const IndexPage = () => {
               }
             }
             mainImage {
-              gatsbyImageData(width:300, height:200, quality: 100)
+              gatsbyImageData(quality: 10)
             }
             price
           }
