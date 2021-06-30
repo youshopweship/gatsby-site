@@ -8,8 +8,7 @@ import './cart.css'
 
 const Cart = () => {
   const contact = 923045681874
-  const encodedMessage = `I+want+to+Place+new+Order`
-
+  const [whatsappMsg, setWhatsappMsg] = React.useState()
   const [qulPaisay, setQulPaisay] = React.useState(0)
   const cart = useSelector(state => state.cart.items)
   const dispatch = useDispatch()
@@ -88,15 +87,24 @@ const Cart = () => {
       <div className="container text-end">
 
         {qulPaisay > 0 &&
-          <button className="btn mb-5" style={{ backgroundColor: '#00e676' }}>
+          <button
+            onClick={() => {
+              let items = `Hello, I want to place order for the following items\n\n`
+              cart.map(item => items += `${item.title}. (qty: x${item.quantity}, price: ${item.quantity * item.price})\n`)
+              items += `\nTotal Amount: Rs.${qulPaisay}/-`
+              let msg = encodeURI(items)
+              setWhatsappMsg(msg)
+            }}
+            className="btn mb-5" style={{ backgroundColor: '#00e676' }}>
             <a
               style={{ textDecoration: 'none', color: 'black' }}
-              href={`https://wa.me/${contact}?text=${encodedMessage}`}
+              href={`https://wa.me/${contact}?text=${whatsappMsg}`}
             >
               ORDER ON WHATSAPP
             </a>
           </button>
         }
+
       </div>
     </div >
   )
