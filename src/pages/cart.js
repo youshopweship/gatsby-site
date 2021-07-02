@@ -6,6 +6,7 @@ import { faLongArrowAltLeft, faTrash, faShoppingBasket } from '@fortawesome/free
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import './cart.css'
 
+
 const Cart = () => {
   const contact = 923045681874
   const [whatsappMsg, setWhatsappMsg] = React.useState()
@@ -95,16 +96,16 @@ const Cart = () => {
               let msg = encodeURI(items)
               setWhatsappMsg(msg)
             }}
-            className="btn mb-5" style={{ backgroundColor: '#00e676' }}>
+            className="btn mb-5" style={{ backgroundColor: '#5BD140', borderRadius: '40px' }}
+          >
             <a
-              style={{ textDecoration: 'none', color: 'black' }}
+              style={{ textDecoration: 'none', color: '#fff' }}
               href={`https://wa.me/${contact}?text=${whatsappMsg}`}
             >
               ORDER ON WHATSAPP
             </a>
           </button>
         }
-
       </div>
     </div >
   )
