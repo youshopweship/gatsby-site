@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { faShoppingCart, faGripLines } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useSelector } from "react-redux"
-
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = () => {
   const qty = useSelector(state => state.cart.items)
@@ -36,17 +36,78 @@ const Header = () => {
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
+            {/* <Link style={{ textDecoration: 'none' }} to="/accessories/"><a href="." class="nav-link">Accessories</a></Link>
             <Link style={{ textDecoration: 'none' }} to="/eyes/"><a href="." class="nav-link">Eyes</a></Link>
             <Link style={{ textDecoration: 'none' }} to="/lips/" ><a href="." class="nav-link">Lips</a></Link>
             <Link style={{ textDecoration: 'none' }} to="/face/" ><a href="." class="nav-link">Face</a></Link>
-            <Link style={{ textDecoration: 'none' }} to="/electronics/"><a href="." class="nav-link">Electronics</a></Link>
+            <Link style={{ textDecoration: 'none' }} to="/electronics/"><a href="." class="nav-link">Electronics</a></Link> */}
+
+            <AniLink
+              style={{ textDecoration: 'none' }}
+              cover
+              bg="#212529"
+              to='/accessories/'
+            >
+              <a href="." class="nav-link">Accessories</a>
+            </AniLink>
+
+            <AniLink
+              style={{ textDecoration: 'none' }}
+              cover
+              bg="#212529"
+              to='/eyes/'
+            >
+              <a href="." class="nav-link">Eyes</a>
+            </AniLink>
+
+
+            <AniLink
+              style={{ textDecoration: 'none' }}
+              cover
+              bg="#212529"
+              to='/lips/'
+            >
+              <a href="." class="nav-link">Lips</a>
+            </AniLink>
+
+            <AniLink
+              style={{ textDecoration: 'none' }}
+              cover
+              bg="#212529"
+              to='/face/'
+            >
+              <a href="." class="nav-link">Face</a>
+            </AniLink>
+
+            <AniLink
+              style={{ textDecoration: 'none' }}
+              cover
+              bg="#212529"
+              to='/electronics/'
+            >
+              <a href="." class="nav-link">Electronics</a>
+            </AniLink>
+
 
           </ul>
 
           <div>
-            <Link style={{ textDecoration: 'none' }} to="/cart/"><a href="." style={{ color: 'white' }} class="nav-link"><FontAwesomeIcon size="2x" icon={faShoppingCart} />{' '}<span style={{ fontSize: 20 }}>({qty.length})</span>
-            </a></Link>
+            <AniLink
+              paintDrip
+              color="#212529"
+              style={{ textDecoration: 'none' }}
+              to="/cart/"
+            >
+              <a
+                href="."
+                style={{ color: 'white' }}
+                class="nav-link"
+              ><FontAwesomeIcon
+                  size="2x"
+                  icon={faShoppingCart}
+                />
+                {' '}<span style={{ fontSize: 20 }}>({qty.length})</span>
+              </a></AniLink>
           </div>
 
         </div>

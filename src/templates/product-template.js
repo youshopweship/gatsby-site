@@ -22,7 +22,7 @@ query ($slug: String!) {
       gatsbyImageData(width: 700, height: 400, quality: 100)
     }
     detailImages {
-      gatsbyImageData(width: 180, height: 100, quality: 100)
+      gatsbyImageData(quality: 100, layout: CONSTRAINED)
     }
     price
   }
@@ -54,7 +54,7 @@ const ProductTemplate = props => {
                 <div style={{ marginRight: '10px', display: 'inline' }}>
 
                   <GatsbyImage
-                    width={500}
+                    style={{ maxWidth: '120px', height: '70px' }}
                     image={getImage(image)}
                     alt="Detail Image"
                   />

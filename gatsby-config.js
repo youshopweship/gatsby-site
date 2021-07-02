@@ -47,6 +47,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
         forceFullSync: true,
       }
-    }
+    },
+    `gatsby-plugin-transition-link`
   ],
 }
