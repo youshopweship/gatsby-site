@@ -5,6 +5,8 @@ import Seo from "../components/seo"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../store/cart.slice'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 
 
@@ -19,7 +21,7 @@ query ($slug: String!) {
       }
     }
     mainImage {
-      gatsbyImageData(width: 700, height: 400, quality: 100)
+      gatsbyImageData(width: 700, height: 400,resizingBehavior: FILL, quality: 100)
     }
     detailImages {
       gatsbyImageData(quality: 100, layout: CONSTRAINED)
@@ -40,6 +42,47 @@ const ProductTemplate = props => {
         <Seo title={props.data.contentfulProduct.title} />
 
         <div className="container mt-3 mb-3" >
+          <Tabs> <TabPanel>
+            <GatsbyImage
+              style={{ maxWidth: '700px', height: '400px', borderRadius: '5px' }}
+              image={getImage(props.data.contentfulProduct.mainImage)}
+              alt="Detail Image"
+            />
+          </TabPanel> {props.data.contentfulProduct.detailImages.map(image => (
+            <TabPanel>
+              <GatsbyImage
+                style={{ maxWidth: '700px', height: '400px', borderRadius: '5px' }}
+                image={getImage(image)}
+                alt="Detail Image"
+              />
+            </TabPanel>
+          ))}
+
+            <TabList className="d-flex flex-nowrap ms-0 ps-0">
+              <Tab>
+                <GatsbyImage
+                  style={{ maxWidth: '100px', height: '60px' }}
+                  image={getImage(props.data.contentfulProduct.mainImage)}
+                  alt="Detail Image"
+                />
+              </Tab>{props.data.contentfulProduct.detailImages.map(image => (
+                <Tab>
+                  <GatsbyImage
+                    style={{ maxWidth: '100px', height: '60px' }}
+                    image={getImage(image)}
+                    alt="Detail Image"
+                  />
+                </Tab>
+              ))}
+            </TabList>
+          </Tabs>
+        </div>
+
+
+
+
+
+        {/* <div className="container mt-3 mb-3" >
           <GatsbyImage
             style={{ borderRadius: '5px' }}
             image={getImage(props.data.contentfulProduct.mainImage)}
@@ -50,9 +93,7 @@ const ProductTemplate = props => {
           <div className="row">
             <div className="col-sm-12 d-flex flex-nowrap">
               {props.data.contentfulProduct.detailImages.map(image => (
-
                 <div style={{ marginRight: '10px', display: 'inline' }}>
-
                   <GatsbyImage
                     style={{ maxWidth: '120px', height: '70px' }}
                     image={getImage(image)}
@@ -61,9 +102,10 @@ const ProductTemplate = props => {
                 </div>
               ))}
             </div>
-
           </div>
-        </div>
+        </div> */}
+
+
         <div className="container">
           <p className="fs-1">{props.data.contentfulProduct.title}</p>
 
@@ -82,10 +124,7 @@ const ProductTemplate = props => {
               Add to Cart
             </button>
           </div>
-
         </div>
-
-
       </div>
     </Layout>
   )
