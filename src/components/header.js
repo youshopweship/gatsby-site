@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart, faAlignJustify } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useSelector } from "react-redux"
 
@@ -23,18 +23,6 @@ const Header = () => {
           </a>
         </Link>
 
-        {/* <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="true"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button> */}
-
         <button
           class="navbar-toggler"
           type="button"
@@ -43,7 +31,7 @@ const Header = () => {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <FontAwesomeIcon size="1x" icon={faAlignJustify} />
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
