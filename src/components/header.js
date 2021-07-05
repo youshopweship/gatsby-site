@@ -9,10 +9,13 @@ const Header = () => {
   const qty = useSelector(state => state.cart.items)
   return (
     < nav class="navbar navbar-expand-lg navbar-dark light bg-dark" >
-      <div class="container">
+      <div class="container"
+
+      >
         <Link
           style={{ textDecoration: 'none', transform: `skewX(-20deg)`, }}
           to="/"
+        // style={{ position: 'relative' }}
         >
           <a
             href="."
@@ -21,6 +24,20 @@ const Header = () => {
           >
             You Shop We Ship
           </a>
+
+          {/* <a
+            class="navbar-brand"
+            style={{
+              position: 'absolute',
+              zIndex: '1',
+              left: '10px',
+              top: '0px',
+              // height: '50px',
+              // width: '200px'
+            }}
+          >
+            <img style={{ backgroundColor: '#212529', width: '100px', height: '100px' }} src={logo2} />
+          </a> */}
         </Link>
 
         <button
@@ -85,10 +102,8 @@ const Header = () => {
               bg="#212529"
               to='/electronics/'
             >
-              <a href="." class="nav-link">Electronics</a>
+              <a href="." class="nav-link">Deals</a>
             </AniLink>
-
-
           </ul>
 
           <div>

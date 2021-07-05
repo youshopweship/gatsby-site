@@ -17,37 +17,45 @@ const Carousel = () => {
   return (
     <div>
       <Slider {...settings}>
-        <div>
+        <div
+        // style={{ objectFit: 'cover' }}
+        >
           <StaticImage
-            src="../images/carousel-8.jpg"
+            src="../images/cover1.jpg"
             formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
-            style={{ width: '100%', height: '500px' }}
+          // style={{ width: '100%', height: '500px', }}
           />
         </div>
-        <div>
+        <div
+        // style={{ objectFit: 'cover' }}
+        >
           <StaticImage
-            src="../images/carousel-3.jpg"
+            src="../images/cover2.jpg"
             formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
-            style={{ width: '100%', height: '500px' }}
+          // style={{ width: '100%', height: '500px', }}
           />
         </div>
 
-        <div>
+        <div
+        // style={{ objectFit: 'cover' }}
+        >
           <StaticImage
-            src="../images/carousel-5.jpg"
+            src="../images/cover3.jpg"
             formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
-            style={{ width: '100%', height: '500px' }}
+          // style={{ width: '100%', height: '500px', }}
           />
         </div>
-        <div>
+        <div
+        // style={{ objectFit: 'cover' }}
+        >
           <StaticImage
-            src="../images/carousel-7.jpg"
+            src="../images/cover4.jpg"
             formats={["AUTO", "WEBP"]}
             alt="Carousel Image"
-            style={{ width: '100%', height: '500px' }}
+          // style={{ width: '100%', height: '500px', }}
           />
         </div>
       </Slider>
