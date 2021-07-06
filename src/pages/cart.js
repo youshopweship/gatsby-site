@@ -35,6 +35,8 @@ const MyModal = props => {
       </Modal.Body>
       <Modal.Footer>
         <Button
+          disabled={props.address === '' ? true : false}
+          style={{ backgroundColor: '#4a4e69', borderColor: '#4a4e69' }}
           onClick={() => {
             let order = props.whatsappMsg
             let adrs = props.address
