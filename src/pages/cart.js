@@ -51,7 +51,7 @@ const MyModal = props => {
         >
           <a
             style={{ textDecoration: 'none', color: '#fff' }}
-            href={`https://wa.me/923045681874?text=${finalMsg}`}
+            href={`https://wa.me/923405588180?text=${finalMsg}`}
           >
             Order Now
           </a>
