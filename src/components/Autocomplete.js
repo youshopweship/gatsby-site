@@ -24,9 +24,15 @@ const AutoComplete = ({ suggestions }) => {
   }
 
   const onClick = (e) => {
-    navigate(`/product/${(e.target.innerText).toLocaleLowerCase().replaceAll(' ', '-').replaceAll('.', '-').replaceAll('(', '-').replaceAll(')', '-').replaceAll('–', '-').replaceAll(',', '-').replaceAll('---', '-').replaceAll('--', '-').replaceAll('&', 'and')}`)
+    let slug = e.target.innerText.toLocaleLowerCase().replaceAll(' ', '-').replaceAll('.', '-').replaceAll('(', '-').replaceAll(')', '-').replaceAll('–', '-').replaceAll(',', '-').replaceAll('---', '-').replaceAll('--', '-').replaceAll('&', 'and')
+
+    if (slug.substring(slug.length - 1) === '-') {
+      slug = slug.substring(0, slug.length - 1)
+    }
+
+    navigate(`/product/${slug}`)
     setFilteredSuggestions([])
-    setInput(e.target.innerText)
+    setInput('')
     setActiveSuggestionIndex(0)
     setShowSuggestions(false)
   }
@@ -61,7 +67,6 @@ const AutoComplete = ({ suggestions }) => {
         type="text"
         placeholder="Search products..."
         onChange={onChange}
-        // onKeyDown={onkeydown}
         value={input}
       />
       {showSuggestions && input && <SuggestionsListComponent />}
