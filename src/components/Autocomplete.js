@@ -61,7 +61,7 @@ const AutoComplete = ({ suggestions }) => {
         type="text"
         placeholder="Search products..."
         onChange={onChange}
-        onKeyDown={onkeydown}
+        // onKeyDown={onkeydown}
         value={input}
       />
       {showSuggestions && input && <SuggestionsListComponent />}
