@@ -24,7 +24,7 @@ const AutoComplete = ({ suggestions }) => {
   }
 
   const onClick = (e) => {
-    navigate(`/product/${(e.target.innerText).toLocaleLowerCase().replaceAll(' ', '-').replaceAll('.', '-')}`)
+    navigate(`/product/${(e.target.innerText).toLocaleLowerCase().replaceAll(' ', '-').replaceAll('.', '-').replaceAll('(', '-').replaceAll(')', '-').replaceAll('–', '-').replaceAll(',', '-').replaceAll('---', '-').replaceAll('--', '-').replaceAll('&', 'and')}`)
     setFilteredSuggestions([])
     setInput(e.target.innerText)
     setActiveSuggestionIndex(0)
