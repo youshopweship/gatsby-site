@@ -7,9 +7,13 @@ import { useStaticQuery, graphql, Link, navigate } from 'gatsby'
 import { useDispatch } from 'react-redux'
 import { addProduct } from '../store/cart.slice'
 
+import AutoComplete from "../components/Autocomplete"
+import "./autocomplete.styles.css"
+
 
 const IndexPage = () => {
   const dispatch = useDispatch()
+
 
   const data = useStaticQuery(
     graphql`
@@ -34,6 +38,9 @@ const IndexPage = () => {
     }
     `
   )
+
+  const allProducts = data.allContentfulProduct.edges
+
   return (
     <Layout>
       <div style={{ marginBottom: '50px', overflow: 'hidden' }}>
@@ -41,14 +48,17 @@ const IndexPage = () => {
       </div>
       <Seo title="Home" />
 
-
-      {
+      <AutoComplete
+        suggestions={allProducts.map(product => product.node.title)}
+      />
+      {/* {
         (data.allContentfulProduct.edges).length > 0 ?
           <div className="text-center"><h2 style={{ color: '#4a4e69', fontFamily: 'Rajdhani, serif' }}>Latest Products</h2></div> : null
-      }
+      } */}
+
+
 
       <div className="container">
-
         {(data.allContentfulProduct.edges).length === 0 ? <h2 className="text-center mt-5 pt-5">No Products found</h2> : null}
         <div className="row d-flex justify-content-center justify-content-sm-center justify-content-md-start">
           {
