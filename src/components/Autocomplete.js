@@ -24,7 +24,7 @@ const AutoComplete = ({ suggestions }) => {
   }
 
   const onClick = (e) => {
-      let slug = e.target.innerText.toLocaleLowerCase().replaceAll(' ', '-').replaceAll('.', '-').replaceAll('(', '-').replaceAll(')', '-').replaceAll(`'`, '').replaceAll('–', '-').replaceAll(',', '-').replaceAll('---', '-').replaceAll('--', '-').replaceAll('&', 'and')
+      let slug = e.target.innerText.toLocaleLowerCase().replaceAll(' ', '-').replaceAll('.', '-').replaceAll('(', '-').replaceAll(')', '-').replaceAll('’', '').replaceAll('–', '-').replaceAll(',', '-').replaceAll('---', '-').replaceAll('--', '-').replaceAll('&', 'and')
     if (slug.substring(slug.length - 1) === '-') {
       slug = slug.substring(0, slug.length - 1)
     }
